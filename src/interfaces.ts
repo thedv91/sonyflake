@@ -1,22 +1,22 @@
 export type Snowflake = string;
 
 export interface SonyflakeOptions {
-    epoch?: number;
+  epoch?: number;
 
-    machineId?: number;
+  machineId?: number;
 }
 
 export interface SonyflakeGenerateCustomIdOptions {
-    timestamp: number;
-    sequence: number;
+  timestamp: number;
+  sequence: number;
 }
 
 export interface SonyflakeDecomposeOptions {
-    epoch: number;
+  epoch: number;
 }
 
 export interface DecomposedSonyflake {
-    timestamp: number;
-    machineId: number;
-    sequence: number;
+  timestamp: number;
+  machineId: number;
+  sequence: number;
 }
