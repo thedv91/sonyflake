@@ -1,0 +1,35 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["import", "@typescript-eslint", "prettier"],
+  "rules": {
+    "no-var": "warn",
+    "prefer-const": "error",
+    "sort-imports": "warn",
+    "@typescript-eslint/no-inferrable-types": "off"
+  },
+  "globals": {
+    "BigInt": "readonly"
+  },
+  "overrides": [
+    {
+      "files": ["test/**/*.test.ts"],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}
