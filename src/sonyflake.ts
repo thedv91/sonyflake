@@ -9,7 +9,7 @@ import {
   TIMESTAMP_LEFT_SHIFT,
   USIGNED_INCREASE,
 } from './constants';
-
+import { getNowBigInt } from './helpers';
 import type {
   DecomposedSonyflake,
   Snowflake,
@@ -17,8 +17,6 @@ import type {
   SonyflakeGenerateCustomIdOptions,
   SonyflakeOptions,
 } from './interfaces';
-
-import { getNowBigInt } from './helpers';
 
 export class Sonyflake {
   /**
@@ -53,7 +51,7 @@ export class Sonyflake {
     }
     this.epoch = epoch;
 
-    this.machineId = BigInt(machineId) & MACHINE_ID_MASK;
+    this.machineId = BigInt(machineId) & BigInt(MACHINE_ID_MASK);
   }
 
   /**
@@ -62,7 +60,8 @@ export class Sonyflake {
   public nextId(): Snowflake {
     const timestamp = getNowBigInt();
     if (this.latestTimestamp === timestamp) {
-      this.sequence = (this.sequence + USIGNED_INCREASE) & SEQUENCE_MASK;
+      this.sequence =
+        (this.sequence + BigInt(USIGNED_INCREASE)) & BigInt(SEQUENCE_MASK);
     } else {
       this.sequence = BigInt(DEFAULT_SEQUENCE);
 
@@ -92,8 +91,9 @@ export class Sonyflake {
     sequence,
   }: SonyflakeGenerateCustomIdOptions): Snowflake {
     return (
-      ((BigInt(timestamp) - BigInt(this.epoch)) << TIMESTAMP_LEFT_SHIFT) |
-      (BigInt(sequence) << MACHINE_ID_SHIFT) |
+      ((BigInt(timestamp) - BigInt(this.epoch)) <<
+        BigInt(TIMESTAMP_LEFT_SHIFT)) |
+      (BigInt(sequence) << BigInt(MACHINE_ID_SHIFT)) |
       this.machineId
     ).toString();
   }
@@ -105,21 +105,25 @@ export class Sonyflake {
     snowflake: Snowflake,
     epoch: number,
   ): number {
-    return Number((BigInt(snowflake) >> TIMESTAMP_LEFT_SHIFT) + BigInt(epoch));
+    return Number(
+      (BigInt(snowflake) >> BigInt(TIMESTAMP_LEFT_SHIFT)) + BigInt(epoch),
+    );
   }
 
   /**
    * Decompose the Snowflake machineId
    */
   public static decomposeMachineId(snowflake: Snowflake): number {
-    return Number(BigInt(snowflake) & MACHINE_ID_MASK);
+    return Number(BigInt(snowflake) & BigInt(MACHINE_ID_MASK));
   }
 
   /**
    * Decompose the Snowflake sequence
    */
   public static decomposeSequence(snowflake: Snowflake): number {
-    return Number((BigInt(snowflake) >> MACHINE_ID_BITS) & SEQUENCE_MASK);
+    return Number(
+      (BigInt(snowflake) >> BigInt(MACHINE_ID_BITS)) & BigInt(SEQUENCE_MASK),
+    );
   }
 
   /**

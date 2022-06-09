@@ -3,22 +3,24 @@
     "node": true
   },
   "extends": [
+    "eslint:recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "warnOnUnsupportedTypeScriptVersion": true
   },
   "plugins": ["import", "@typescript-eslint", "prettier"],
   "rules": {
+    "no-unused-vars": "warn",
     "no-var": "warn",
     "prefer-const": "error",
-    "sort-imports": "warn",
     "@typescript-eslint/no-inferrable-types": "off"
   },
   "globals": {

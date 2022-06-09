@@ -7,11 +7,11 @@ export const Epoch = {
 export const DEFAULT_VALUE = 0;
 export const DEFAULT_SEQUENCE = DEFAULT_VALUE;
 
-export const USIGNED_INCREASE = 1n;
-export const SIGNED_INCREASE = -1n;
+export const USIGNED_INCREASE = 1;
+export const SIGNED_INCREASE = -1;
 
-export const MACHINE_ID_BITS = 16n;
-export const SEQUENCE_BITS = 8n;
+export const MACHINE_ID_BITS = 16;
+export const SEQUENCE_BITS = 8;
 
 export const MACHINE_ID_MASK =
   SIGNED_INCREASE ^ (SIGNED_INCREASE << MACHINE_ID_BITS);

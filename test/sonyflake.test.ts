@@ -1,4 +1,4 @@
-import { Sonyflake } from '..';
+import { Sonyflake } from '../src';
 
 describe('Sonyflake', (): void => {
     const EPOCH = Date.UTC(2020, 4, 18, 0, 0, 0);

@@ -2,10 +2,14 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
+    "noEmit": true,
     "moduleResolution": "Node",
     "declaration": true,
     "sourceMap": false,
     "strict": true,
-    "allowSyntheticDefaultImports": true
-  }
+    "allowSyntheticDefaultImports": true,
+    "rootDir": "src",
+    "outDir": "lib"
+  },
+  "include": ["src/**/*.ts"]
 }
