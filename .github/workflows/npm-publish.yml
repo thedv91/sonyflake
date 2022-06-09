@@ -1,0 +1,21 @@
+name: npm-publish
+on:
+  push:
+    branches:
+      - main
+jobs:
+  npm-publish:
+    name: npm-publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Publish if version has been updated
+        uses: actions/setup-node@v3
+        with: # All of theses inputs are optional
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: yarn
+      - run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
