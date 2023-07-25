@@ -1,12 +1,8 @@
 Sonyflake - A modern implementation [Sonyflake](https://github.com/sony/sonyflake) on TypeScript
 
-| 📖 [Documentation](docs/) |
-| ------------------------- |
-
-
 ## Installation
 
-> **[Node.js](https://nodejs.org/) 10.16.0 or newer is required**
+> **[Node.js](https://nodejs.org/) 16 or newer is required**
 
 ### Yarn
 
