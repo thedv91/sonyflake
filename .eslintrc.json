@@ -1,22 +1,23 @@
 {
+  "root": true,
   "env": {
     "node": true
   },
   "extends": [
     "eslint:recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:import/typescript",
+    "plugin:import/recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:import/typescript",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2018,
     "sourceType": "module",
+    "project": true,
     "warnOnUnsupportedTypeScriptVersion": true
   },
-  "plugins": ["import", "@typescript-eslint", "prettier"],
   "rules": {
     "no-unused-vars": "warn",
     "no-var": "warn",
@@ -33,5 +34,6 @@
         "jest": true
       }
     }
-  ]
+  ],
+  "ignorePatterns": ["rollup.config.js", "lib"]
 }

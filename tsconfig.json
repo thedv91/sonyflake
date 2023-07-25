@@ -3,13 +3,13 @@
     "target": "ESNext",
     "module": "ESNext",
     "noEmit": true,
-    "moduleResolution": "Node",
-    "declaration": true,
+    "moduleResolution": "Bundler",
+    "declaration": false,
     "sourceMap": false,
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "rootDir": "src",
     "outDir": "lib"
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "test/**/*.ts"]
 }

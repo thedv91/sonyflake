@@ -1,0 +1,5 @@
+---
+'sonyflake': minor
+---
+
+Update package
